@@ -38,12 +38,15 @@ python loader.py --index cooking-recipes ./data/cooking-recipes.json
 
 ### Configure the script
 You need to edit the Userscript module and configure the following variables at the top of the script.
-```sh
+```js
 const ELASTIC_RECIPES_SEARCH_URL = "https://xxxxx.es.us-east-1.aws.elastic.cloud/cooking-recipes/_search"; // Search endpoint for the cooking-recipes indice
 const COMPLETION_ENDPOINT_URL = "https://xxxxx.es.us-east-1.aws.elastic.cloud/_inference/completion/azureopenai-completion-63bknfmstid"; // Inference endpoint for the completion task
 const ELASTIC_API_TOKEN = ""; // Elastic API token
 const SEARCH_TOTAL_RESULTS = 3; // Number of recipes the search would return
  ```
+
+ ### Install the script in Violentmonkey
+ You can create a new script in Violentmonkey and paste the content of the woolies-agent.user.js file. If you need more details refer to the Violentmonkey documentation [here](https://violentmonkey.github.io).
  
 ## Limitations
 The current search query is basic and can definitely be improved to increase the relevancy of the results.
