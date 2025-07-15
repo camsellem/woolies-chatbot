@@ -1,0 +1,32 @@
+{
+    "properties": {
+        "name": {
+            "type": "text"
+        },
+        "directions": {
+            "type": "semantic_text",
+            "inference_id": ".elser-2-elasticsearch",
+            "model_settings": {
+                "service": "elasticsearch",
+                "task_type": "sparse_embedding"
+            }
+        },
+        "ingredients": {
+            "type": "text"
+        },
+        "ingredients_keywords": {
+            "type": "keyword"
+        },
+        "chief_review": {
+            "type": "semantic_text",
+            "inference_id": ".elser-2-elasticsearch",
+            "model_settings": {
+                "service": "elasticsearch",
+                "task_type": "sparse_embedding"
+            }
+        },
+        "url": {
+            "type": "keyword"
+        }
+    }
+}

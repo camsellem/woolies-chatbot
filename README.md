@@ -27,6 +27,9 @@ The demo flow is as follows:
 ## Installing the demo
 The following steps describe how to build and deploy the demo in your envrionment.
 
+### Create the indice
+The indice must have a spcific mapping that include keyword and semantic fields. The definition of the mapping is included in the ./data folder.
+
 ### Load the data
 You’ll first need to load the recipes into a new index. A Python loader script is included in this repository.
 ```sh
