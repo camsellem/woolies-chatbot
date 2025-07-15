@@ -1,5 +1,7 @@
 # The Woolies Chatbot demo
-This repository contains the demo scripts used for the chatbot demonstration during APEX 2025 in Chicago. The core of the demo is a Userscript module, which lets you manipulate the page's DOM, capture user events, and inject JavaScript snippets.
+This repository contains the demo scripts used for the chatbot demonstration during APEX 2025 in Chicago.
+This is a short demonstration of a RAG architecture built with Elastic.
+The core of the demo is a Userscript module, which lets you manipulate the page's DOM, capture user events, and inject JavaScript snippets.
 
 The demo flow is as follows:
 
