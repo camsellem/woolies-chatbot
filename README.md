@@ -5,12 +5,13 @@ The core of the demo is a [Userscript](https://en.wikipedia.org/wiki/Userscript)
 
 The demo flow is as follows:
 
-1. Browse the website and add at least three products to your shopping cart.
+1. Browse the [Woolworths website](https://www.woolworths.com.au) and add at least three products to your shopping cart.
 2. After adding the third item, the script prompts the customer for additional preferences (e.g., “I have a preference for gluten‑free recipes”).
 3. A hybrid search is triggered, combining your preference (via vector embedding) and the shopping cart contents (via lexical matching).
 4. Elastic returns a list of three recipes, which are displayed to the customer.
 5. Once the customer selects a recipe, both the recipe details and the shopping cart contents are sent to an LLM.
 6. The LLM then provides guidance and additional suggestions (e.g., “You’re missing key ingredients,” “Swap this product for a healthier option,” etc.).
+
 
 | Info         | Description                                                                     |
 |--------------|---------------------------------------------------------------------------------|
@@ -35,7 +36,7 @@ The indice must have a spcific mapping that include keyword and semantic fields.
 ### Load the data
 You’ll first need to load the recipes into a new index. A Python loader script is included in this repository.
 ```sh
-python loader.py --index cooking-recipes ./data/cooking-recipes.json
+python ./python/loader.py --index cooking-recipes ./data/cooking-recipes.json
 ```
 
 ### Configure the script
@@ -44,16 +45,16 @@ You need to edit the Userscript module and configure the following variables at 
 const ELASTIC_RECIPES_SEARCH_URL = "https://xxxxx.es.us-east-1.aws.elastic.cloud/cooking-recipes/_search"; // Search endpoint for the cooking-recipes indice
 const COMPLETION_ENDPOINT_URL = "https://xxxxx.es.us-east-1.aws.elastic.cloud/_inference/completion/azureopenai-completion-63bknfmstid"; // Inference endpoint for the completion task
 const ELASTIC_API_TOKEN = ""; // Elastic API token
-const SEARCH_TOTAL_RESULTS = 3; // Number of recipes the search would return
+const SEARCH_TOTAL_RESULTS = 3; // Number of recipes the search will return
  ```
 
  ### Install the script in Violentmonkey
- You can create a new script in Violentmonkey and paste the content of the woolies-agent.user.js file. If you need more details refer to the Violentmonkey documentation [here](https://violentmonkey.github.io).
+ You can create a new script in Violentmonkey and paste the content of the woolies-agent.user.js file. If you need more details refer to the Violentmonkey [documentation](https://violentmonkey.github.io).
  
 ## Limitations
 The current search query is basic and can definitely be improved to increase the relevancy of the results.
 
-Currently, this script only works with the Woolworths website (http://www.woolworths.com.au). However, it can be adapted for other e‑commerce grocery websites by making a few adjustments:
+Currently, this script only works with the [Woolworths website](https://www.woolworths.com.au). However, it can be adapted for other e‑commerce grocery websites by making a few adjustments:
 - Updating the DOM selectors for various elements (e.g., the “Add to Cart” button, product names, etc.)
 - Identifying the API endpoint that returns the current contents of the shopping cart
 
