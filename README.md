@@ -12,6 +12,7 @@ The demo flow is as follows:
 5. Once the customer selects a recipe, both the recipe details and the shopping cart contents are sent to an LLM.
 6. The LLM then provides guidance and additional suggestions (e.g., “You’re missing key ingredients,” “Swap this product for a healthier option,” etc.).
 
+| Info         | Description                                                                     |
 |--------------|---------------------------------------------------------------------------------|
 | __Title__    | Hybrid search and RAG for Ecommerce platform                                    |
 | __Duration__ | 10 minutes max                                                                  |
