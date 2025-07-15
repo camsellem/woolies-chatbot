@@ -53,7 +53,7 @@
 
         /* Links */
         #elastic-agent-window a {
-            color: #36454F !important;
+            color: #FFFFFF !important;
             font-family: Roboto, Arial, sans-serif;
             font-weight: bold;
             text-decoration: underline !important;
@@ -287,10 +287,11 @@
     function buildCookingAssistantPrompt(recipeIngredients, shoppingCartItems) {
         return `You are a cooking assistant specializing in analyzing recipes and shopping carts to identify missing ingredients.
             Instructions for structuring your answer:
-            - When you suggest an ingredient as a replacement or a complement, you always highlight it as a hyperlink (<a> tag) with the following URL attached to the link: https://www.woolworths.com.au/shop/search/products?searchTerm=<ingredient> (replace <ingredient> with the name of the ingredient you just listed).
+            - When you suggest an ingredient as a replacement or a complement, you always highlight it as a hyperlink (<a> tag with the attribue target="_self") with the following URL attached to the link: https://www.woolworths.com.au/shop/search/products?searchTerm=<ingredient> (replace <ingredient> with the name of the ingredient you just listed).
             - Your response must be in HTML format. Tthe response will be inserted in an existing <div> element.
             - Make sure you had new lines (tag <br \>) when it's necessary.
             - The first part of your answer is a mention in bold (use the HTML tag <strong>), to congratulate the customer on selecting a delicious recipe. Keep a casual and funny tone.
+            - In the first part of your answer, include a note indicating if the recipe is suited to a particular diet (e.g., gluten‑free, vegan, or vegetarian).
             - The second part is a list of all missing ingredients. You can rename the ingredients into something more generic. Keep it short and simple.
             - You'll list only the core ingredients of the recipe. Regroup the basic ingredients (e.g., salt, pepper, etc.) into categories.
             - In the last section of your answer, you'll suggest improvements regarding items that have been selected by the customers.
@@ -381,11 +382,9 @@
                                 {
                                     standard: {
                                         query: {
-                                            multi_match: {
-                                                boost: 5,
-                                                query: arrItemsListKeywords,
-                                                fields: ["ingredients_keywords"]
-                                            }
+                                          term: {
+                                            ingredients_keywords: arrItemsListKeywords
+                                          }
                                         }
                                     }
                                 },
@@ -393,8 +392,7 @@
                                     standard: {
                                         query: {
                                             semantic: {
-                                                boost: 0.1,
-                                                field: "directions_semantic",
+                                                field: "chief_review",
                                                 query: preference
                                             }
                                         }
@@ -408,11 +406,11 @@
                 onload: function (response) {
                     try {
                         const data = JSON.parse(response.responseText);
-                        logMessageBox('Learn more about Semantic Search', 'https://docs.google.com/presentation/d/e/2PACX-1vQZK_xfkmI6SPNL0MY_4nUBDIAoNh8_9R7HuXkTQwOxC7ipwL5JXyWX_YBGha8G_zZWFbzWUZr3Lcly/pubembed?slide=id.g35fbcf3e1a4_0_1134#slide=id.g35fbcf3e1a4_0_1134');
+                        //logMessageBox('Learn more about Semantic Search', 'https://docs.google.com/presentation/d/e/2PACX-1vQWjI-O0PAAp3eb6mia0lP8dOni6LO5zCQVQGz0HMX7XfoQu5H-OdLeKNt0945XY9yHQkkSU5EX-4sW/pubembed?slide=id.g36e6b177a49_0_264#slide=id.g36e6b177a49_0_264');
                         let recipes = [];
                         if (data.hits && data.hits.hits) {
                             recipes = data.hits.hits.map((hit, idx) => ({
-                                title: hit._source && hit._source.title ? hit._source.title : "No title",
+                                name: hit._source && hit._source.name ? hit._source.name : "No title",
                                 url: hit._source && hit._source.url ? hit._source.url : "#",
                                 idx,
                                 full: hit._source
@@ -426,7 +424,7 @@
                                 recipes.map(recipe =>
                                     `<li>
                                         <a href="${recipe.url}" class="recipe-link" data-recipe-idx="${recipe.idx}">
-                                            ${recipe.title}
+                                            ${recipe.name}
                                         </a>
                                     </li>`
                                 ).join('') +
@@ -605,7 +603,7 @@
                             cartProductNames
                         )
                     };
-                    logMessageBox('Learn more about RAG architecture', 'https://docs.google.com/presentation/d/e/2PACX-1vQZK_xfkmI6SPNL0MY_4nUBDIAoNh8_9R7HuXkTQwOxC7ipwL5JXyWX_YBGha8G_zZWFbzWUZr3Lcly/pubembed?slide=id.g35fbcf3e1a4_0_1134#slide=id.g35fbcf3e1a4_0_1134');
+                    //logMessageBox('Learn more about RAG architecture', 'https://docs.google.com/presentation/d/e/2PACX-1vQWjI-O0PAAp3eb6mia0lP8dOni6LO5zCQVQGz0HMX7XfoQu5H-OdLeKNt0945XY9yHQkkSU5EX-4sW/pubembed');
                     GM_xmlhttpRequest({
                         method: 'POST',
                         url: COMPLETION_ENDPOINT_URL,

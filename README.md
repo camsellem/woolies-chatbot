@@ -24,19 +24,27 @@ The demo flow is as follows:
 - An Elastic Serverless account
 - An Azure OpenAI inference endpoint configured for completion
 
-## Running the demo
+## Installing the demo
 The following steps describe how to build and deploy the demo in your envrionment.
+
+### Load the data
+You’ll first need to load the recipes into a new index. A Python loader script is included in this repository.
+```sh
+python loader.py --index cooking-recipes ./data/cooking-recipes.json
+```
 
 ### Configure the script
 You need to edit the Userscript module and configure the following variables at the top of the script.
 ```sh
-const ELASTIC_RECIPES_SEARCH_URL = "<>";
-const COMPLETION_ENDPOINT_URL = "<Url of the completion inference endpoint>";
+const ELASTIC_RECIPES_SEARCH_URL = "https://xxxxx.es.us-east-1.aws.elastic.cloud/cooking-recipes/_search"; // Search endpoint for the cooking-recipes indice
+const COMPLETION_ENDPOINT_URL = "https://xxxxx.es.us-east-1.aws.elastic.cloud/_inference/completion/azureopenai-completion-63bknfmstid"; // Inference endpoint for the completion task
 const ELASTIC_API_TOKEN = ""; // Elastic API token
 const SEARCH_TOTAL_RESULTS = 3; // Number of recipes the search would return
  ```
  
 ## Limitations
+The current search query is basic and can definitely be improved to increase the relevancy of the results.
+
 Currently, this script only works with the Woolworths website (http://www.woolworths.com.au). However, it can be adapted for other e‑commerce grocery websites by making a few adjustments:
 - Updating the DOM selectors for various elements (e.g., the “Add to Cart” button, product names, etc.)
 - Identifying the API endpoint that returns the current contents of the shopping cart
