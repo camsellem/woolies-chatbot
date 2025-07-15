@@ -1,7 +1,7 @@
 # The Woolies Chatbot demo
 This repository contains the demo scripts used for the chatbot demonstration during APEX 2025 in Chicago.
 This is a short demonstration of a RAG architecture built with Elastic.
-The core of the demo is a Userscript module, which lets you manipulate the page's DOM, capture user events, and inject JavaScript snippets.
+The core of the demo is a [Userscript](https://en.wikipedia.org/wiki/Userscript) module, which lets you manipulate the page's DOM, capture user events, and inject JavaScript snippets.
 
 The demo flow is as follows:
 
@@ -12,7 +12,6 @@ The demo flow is as follows:
 5. Once the customer selects a recipe, both the recipe details and the shopping cart contents are sent to an LLM.
 6. The LLM then provides guidance and additional suggestions (e.g., “You’re missing key ingredients,” “Swap this product for a healthier option,” etc.).
 
-|              |                                                                                 |
 |--------------|---------------------------------------------------------------------------------|
 | __Title__    | Hybrid search and RAG for Ecommerce platform                                    |
 | __Duration__ | 10 minutes max                                                                  |
@@ -22,9 +21,9 @@ The demo flow is as follows:
 | __Features__ | Hybrid search, vectorization, LLM integration                                   |
 
 ## Pre-requisites
-- The Violentmonkey (or Tempermonkey, Greasemonkey) extension installed
-- An Elastic Serverless account
-- An Azure OpenAI inference endpoint configured for completion
+- The Violentmonkey (or Tempermonkey, Greasemonkey) extension installed (tested on Chrome).
+- An Elastic Serverless account.
+- An Azure OpenAI inference endpoint configured for completion.
 
 ## Installing the demo
 The following steps describe how to build and deploy the demo in your envrionment.
