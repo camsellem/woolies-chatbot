@@ -1,5 +1,2 @@
-recipes.json
-python/create_index.py
-python/process_recipes.py
-snippets/snippets.txt
-dump.out
+.bak/recipes.json
+.bak/process_recipes.py
