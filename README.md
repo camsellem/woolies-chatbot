@@ -19,14 +19,14 @@ The core of the demo is a [Userscript](https://en.wikipedia.org/wiki/Userscript)
 
 ## Demo flow
 
-![Demo flow](/assets/demo-flow.svg)
-
 1. Browse the [Woolworths website](https://www.woolworths.com.au) and add at least three products to your shopping cart.
 2. After adding the third item, the script prompts the customer for additional preferences (e.g., “I have a preference for gluten‑free recipes”).
 3. A hybrid search is triggered, combining your preference (via vector embedding) and the shopping cart contents (via lexical matching).
 4. Elastic returns a list of three recipes, which are displayed to the customer.
 5. Once the customer selects a recipe, both the recipe details and the shopping cart contents are sent to an LLM.
 6. The LLM then provides guidance and additional suggestions (e.g., “You’re missing key ingredients,” “Swap this product for a healthier option,” etc.).
+
+![Demo flow](/assets/demo-flow.svg)
 
 ## Pre-requisites
 - The Violentmonkey (or Tempermonkey, Greasemonkey) extension installed (tested on Chrome).
@@ -54,8 +54,8 @@ const ELASTIC_API_TOKEN = ""; // Elastic API token
 const SEARCH_TOTAL_RESULTS = 3; // Number of recipes the search will return
  ```
 
- ### Install the script in Violentmonkey
- You can create a new script in Violentmonkey and paste the content of the woolies-agent.user.js file. If you need more details refer to the Violentmonkey [documentation](https://violentmonkey.github.io).
+### Install the script in Violentmonkey
+You can create a new script in Violentmonkey and paste the content of the `woolies-agent.user.js` file. If you need more details refer to the Violentmonkey [documentation](https://violentmonkey.github.io).
  
 ## Limitations
 The current search query is basic and can definitely be improved to increase the relevancy of the results.
