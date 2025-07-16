@@ -14,7 +14,7 @@ The core of the demo is a [Userscript](https://en.wikipedia.org/wiki/Userscript)
 
 <picture>
   <source srcset="/assets/screenshot.png" media="(max-width:100px)" />
-  <img alt="Screenshot of Woolies chatbot" src="/assets/screenshot.png" width="40%">
+  <img alt="Screenshot of Woolies chatbot" src="/assets/screenshot.png" width="80%">
 </picture>
 
 ## Demo flow
