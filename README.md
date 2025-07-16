@@ -3,11 +3,6 @@ This repository contains the demo scripts used for the chatbot demonstration dur
 This is a short demonstration of a RAG architecture built with Elastic.
 The core of the demo is a [Userscript](https://en.wikipedia.org/wiki/Userscript) module, which lets you manipulate the page's DOM, capture user events, and inject JavaScript snippets.
 
-<picture>
-  <source srcset="/assets/screenshot.png" media="(max-width:100px)" />
-  <img alt="Screenshot of Woolies chatbot" src="/assets/screenshot.png">
-</picture>
-
 | Info         | Description                                                                     |
 |--------------|---------------------------------------------------------------------------------|
 | __Title__    | Hybrid search and RAG for Ecommerce platform                                    |
@@ -16,6 +11,11 @@ The core of the demo is a [Userscript](https://en.wikipedia.org/wiki/Userscript)
 | __Personas__ |                                                                                 |
 | __Products__ | Search and GenAI capabilities                                                   |
 | __Features__ | Hybrid search, vectorization, LLM integration                                   |
+
+<picture>
+  <source srcset="/assets/screenshot.png" media="(max-width:100px)" />
+  <img alt="Screenshot of Woolies chatbot" src="/assets/screenshot.png" width="100px">
+</picture>
 
 ## Demo flow
 
