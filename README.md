@@ -3,16 +3,6 @@ This repository contains the demo scripts used for the chatbot demonstration dur
 This is a short demonstration of a RAG architecture built with Elastic.
 The core of the demo is a [Userscript](https://en.wikipedia.org/wiki/Userscript) module, which lets you manipulate the page's DOM, capture user events, and inject JavaScript snippets.
 
-The demo flow is as follows:
-
-1. Browse the [Woolworths website](https://www.woolworths.com.au) and add at least three products to your shopping cart.
-2. After adding the third item, the script prompts the customer for additional preferences (e.g., “I have a preference for gluten‑free recipes”).
-3. A hybrid search is triggered, combining your preference (via vector embedding) and the shopping cart contents (via lexical matching).
-4. Elastic returns a list of three recipes, which are displayed to the customer.
-5. Once the customer selects a recipe, both the recipe details and the shopping cart contents are sent to an LLM.
-6. The LLM then provides guidance and additional suggestions (e.g., “You’re missing key ingredients,” “Swap this product for a healthier option,” etc.).
-
-
 | Info         | Description                                                                     |
 |--------------|---------------------------------------------------------------------------------|
 | __Title__    | Hybrid search and RAG for Ecommerce platform                                    |
@@ -21,6 +11,17 @@ The demo flow is as follows:
 | __Personas__ |                                                                                 |
 | __Products__ | Search and GenAI capabilities                                                   |
 | __Features__ | Hybrid search, vectorization, LLM integration                                   |
+
+## Demo flow
+
+![Demo flow](/assets/demo-flow.svg)
+
+1. Browse the [Woolworths website](https://www.woolworths.com.au) and add at least three products to your shopping cart.
+2. After adding the third item, the script prompts the customer for additional preferences (e.g., “I have a preference for gluten‑free recipes”).
+3. A hybrid search is triggered, combining your preference (via vector embedding) and the shopping cart contents (via lexical matching).
+4. Elastic returns a list of three recipes, which are displayed to the customer.
+5. Once the customer selects a recipe, both the recipe details and the shopping cart contents are sent to an LLM.
+6. The LLM then provides guidance and additional suggestions (e.g., “You’re missing key ingredients,” “Swap this product for a healthier option,” etc.).
 
 ## Pre-requisites
 - The Violentmonkey (or Tempermonkey, Greasemonkey) extension installed (tested on Chrome).
