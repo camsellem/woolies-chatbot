@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch, helpers
 
 client = Elasticsearch(
     "https://sandbox-search-genai-e76ccd.es.us-east-1.aws.elastic.cloud",
-    api_key="bWwwem41Y0JnSXpvQ0FRckZwNDU6UkdteVNTSG9DVG9MYmVaamt0RDVYUQ==",
+    api_key="",
     request_timeout=600
 )
 
